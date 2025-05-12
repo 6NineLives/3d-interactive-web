@@ -1,0 +1,449 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 3%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 3%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 47 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 9%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 9%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 0 0% 9%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 47 100% 50%;
+  --gold: 50 100% 50%;
+  --gold-dark: 45 80% 30%;
+}
+
+/* Disable most animations for performance */
+* {
+  animation: none !important;
+}
+
+/* Exception for the globe scroll animation and essential transitions */
+.spline-viewer-container,
+[data-spline-container],
+.scroll-progress,
+.animate-bounce,
+.flip-card-container,
+.flip-card,
+.flip-card-front,
+.flip-card-back {
+  animation: inherit !important;
+  transition: transform 0.5s ease, opacity 0.5s ease !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enhanced hero section styles */
+#hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Giant RISE text styling */
+#hero-section h1.text-\[25vw\] {
+  font-family: "Arial Black", "Helvetica Bold", sans-serif;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+/* Improved transition between sections */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure the hero section has a proper transition to the next section */
+#hero-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, black);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Remove snap scrolling and fix transitions */
+.fullpage-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  height: auto;
+  overflow-y: visible;
+}
+
+.fullpage-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Remove snap settings */
+.snap-start {
+  scroll-snap-align: unset;
+  scroll-snap-stop: unset;
+}
+
+/* Improve section transitions */
+section {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Custom scrollbar for other elements */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Preloader animation */
+.loader-ring {
+  animation: rotate 1.5s linear infinite !important;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Neon glow effects */
+.text-glow {
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Spline viewer styles */
+spline-viewer {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 1 !important; /* Ensure spline viewer is visible */
+  visibility: visible !important; /* Ensure spline viewer is visible */
+  position: relative;
+  z-index: 5; /* Higher z-index to ensure it's above any potential overlays */
+}
+
+@media (max-width: 768px) {
+  spline-viewer {
+    min-height: 400px;
+  }
+}
+
+/* Enhanced hero section styles */
+.hero-globe-container {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.hero-globe-container spline-viewer {
+  transform-origin: center center;
+}
+
+/* Gold gradient background */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, rgba(30, 20, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(30, 20, 0, 0.9));
+}
+
+/* Staggered animations */
+.stagger-item {
+  opacity: 1; /* Changed from 0 to ensure content is visible by default */
+  transform: translateY(0); /* Changed from translateY(20px) */
+}
+
+.stagger-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Text gradient effect */
+.text-gradient {
+  background: linear-gradient(to right, #ffd700, #ffc107);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fullpage transition indicator */
+.section-indicator {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.indicator-dot.active {
+  background-color: #ffd700;
+  transform: scale(1.5);
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #ffd700, #ffc107);
+  z-index: 1000;
+  width: 0%;
+}
+
+/* Add this to ensure floating cards are visible */
+.service-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Add these styles to ensure text is always visible */
+.text-white,
+.text-gray-300,
+.text-gray-400,
+.text-xl,
+.text-3xl,
+.text-4xl,
+.text-lg,
+.font-bold,
+.font-medium {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure all content is visible */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+span,
+a,
+button {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Add these styles to improve text readability and spacing */
+
+/* Improve line height for better readability */
+.text-gray-400 {
+  line-height: 1.7;
+}
+
+/* Ensure consistent spacing between feature items */
+.space-y-6 > div {
+  margin-bottom: 1.75rem;
+}
+
+/* Improve text contrast for better visibility */
+.text-gray-400 {
+  color: rgba(180, 185, 195, 0.95);
+}
+
+/* Add a subtle text shadow to improve readability on dark backgrounds */
+.text-gray-300,
+.text-gray-400 {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Fix spacing for feature items */
+.flex.items-start {
+  margin-bottom: 1.5rem;
+}
+
+/* Improve spacing between heading and description in feature items */
+.flex.items-start h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* Add more space between the icon and text in feature items */
+.flex.items-start .mr-3,
+.flex.items-start .mr-4 {
+  margin-right: 1rem;
+}
+
+/* Ensure proper vertical alignment of text with icons */
+.flex.items-start .mt-1 {
+  margin-top: 0.375rem;
+}
+
+/* Add styles for AI hotspots */
+.ai-hotspot {
+  cursor: pointer;
+}
+
+.ai-hotspot:hover {
+  background-color: rgba(255, 215, 0, 0.8);
+}
+
+/* Improve spacing in contact section feature items */
+#contact .flex.items-start {
+  margin-bottom: 2rem;
+}
+
+/* Ensure proper spacing in all sections */
+section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Improve scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Improve container flow */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Enhance footer animations */
+.footer-heading,
+.footer-text,
+.footer-bottom,
+.footer-social {
+  opacity: 1 !important;
+}
+
+/* Custom scrollbar for card content */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #111;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+/* Flip card styles */
+.perspective-container {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Add this to ensure the flip card container has proper height */
+.flip-card-container {
+  min-height: 400px;
+}
+
+/* Ensure the flip card front and back have proper styling */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Add hover effect for flip cards */
+.flip-card-front {
+  cursor: pointer;
+}
+
+.flip-card-front:hover {
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+}
+
+/* Animation for bounce */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite !important;
+}

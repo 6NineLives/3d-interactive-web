@@ -1,0 +1,216 @@
+/* Advanced animations for Rise website */
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.float-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Glow pulse animation */
+@keyframes glow-pulse-strong {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+  }
+}
+
+.glow-pulse-strong {
+  animation: glow-pulse-strong 3s infinite;
+}
+
+/* Rotating animation */
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+/* Blur in animation */
+@keyframes blur-in {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.blur-in {
+  animation: blur-in 1.5s forwards;
+}
+
+/* Text reveal animation */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-reveal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #000, #000);
+  animation: text-reveal 2s forwards;
+}
+
+@keyframes text-reveal {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+/* Parallax effect classes */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* 3D card effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(10deg);
+}
+
+.card-3d-content {
+  transform: translateZ(20px);
+}
+
+/* Gradient text animation */
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ffd700, #ffa500, #ffd700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-text 3s linear infinite;
+}
+
+/* Particle container */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.5);
+  pointer-events: none;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Typing cursor animation */
+@keyframes typing-cursor {
+  0% {
+    border-right-color: rgba(255, 215, 0, 1);
+  }
+  50% {
+    border-right-color: transparent;
+  }
+  100% {
+    border-right-color: rgba(255, 215, 0, 1);
+  }
+}
+
+.typing-cursor {
+  border-right: 2px solid rgba(255, 215, 0, 1);
+  animation: typing-cursor 1s infinite;
+}
+
+/* Scroll indicator animation */
+@keyframes scroll-indicator {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-indicator {
+  animation: scroll-indicator 2s infinite;
+}
+
+/* Perspective container for 3D effects */
+.perspective-container {
+  perspective: 1000px;
+}

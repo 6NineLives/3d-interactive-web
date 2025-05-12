@@ -1,0 +1,54 @@
+/* Simple scroll reveal animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay variants */
+.delay-100 {
+  transition-delay: 0.1s;
+}
+
+.delay-200 {
+  transition-delay: 0.2s;
+}
+
+.delay-300 {
+  transition-delay: 0.3s;
+}
+
+.delay-400 {
+  transition-delay: 0.4s;
+}
+
+.delay-500 {
+  transition-delay: 0.5s;
+}
+
+/* Different animation styles */
+.from-left {
+  transform: translateX(-30px);
+}
+
+.from-right {
+  transform: translateX(30px);
+}
+
+.from-left.scroll-visible,
+.from-right.scroll-visible {
+  transform: translateX(0);
+}
+
+.scale-up {
+  transform: scale(0.9);
+}
+
+.scale-up.scroll-visible {
+  transform: scale(1);
+}
